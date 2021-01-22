@@ -1,1 +1,10 @@
-
+---
+ - name:  Http server config 
+   hosts:  myservers
+   tasks:  
+     -name: Install Httpd package 
+      yum: name = httpd state=present 
+     -name: Starting the apache service 
+      service: name=httpd  state=restarted
+     -name: Copy webpage to document root 
+      copy: content="This is through my first playbook" dest=/var/www/html/index.html
